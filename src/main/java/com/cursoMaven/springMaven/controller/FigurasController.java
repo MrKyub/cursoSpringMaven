@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/figuras-spring-gradle")
+@RequestMapping("/figuras-spring-maven")
 @Tag(name = "API para calculo de figuras con maven")
 @Slf4j
 public class FigurasController {
