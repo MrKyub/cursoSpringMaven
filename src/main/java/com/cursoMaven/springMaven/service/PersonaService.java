@@ -24,4 +24,10 @@ public interface PersonaService {
 
     ResponseEntity<Object> obtenerDatosPersonaFiltro(Integer id);
 
+    ResponseEntity<?> guardarPersonaFormaNativa(PersonaRequest reuqest);
+
+    ResponseEntity<?> actualizarPersonaFormaNativa(PersonaRequest reuqest);
+
+    boolean eliminarPersonaFormaNativa(int id);
+
 }

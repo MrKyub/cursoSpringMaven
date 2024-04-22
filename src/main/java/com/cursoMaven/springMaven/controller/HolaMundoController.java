@@ -1,6 +1,7 @@
 package com.cursoMaven.springMaven.controller;
 
 import com.cursoMaven.springMaven.dto.Persona;
+import com.cursoMaven.springMaven.dto.response.Posts;
 import com.cursoMaven.springMaven.service.EjerciciosService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -47,6 +48,13 @@ public class HolaMundoController {
     public List<String> getListaNombres(){
 
         return ejerciciosService.getListaNombres();
+    }
+
+    @GetMapping("/posts/{id}")
+    @Operation(summary = "Operacion para consumir un servicio REST")
+    public Posts getPosts(@PathVariable int id){
+
+        return ejerciciosService.getPosts(id);
     }
 
 }

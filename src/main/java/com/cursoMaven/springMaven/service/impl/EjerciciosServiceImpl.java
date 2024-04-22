@@ -1,8 +1,11 @@
 package com.cursoMaven.springMaven.service.impl;
 
+import com.cursoMaven.springMaven.dto.response.Posts;
 import com.cursoMaven.springMaven.service.EjerciciosService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,4 +34,27 @@ public class EjerciciosServiceImpl implements EjerciciosService {
         }
         return response;
     }
+
+    public Posts getPosts(int id) {
+
+        ResponseEntity<Posts> resultPost = null;
+
+        try{
+
+            String url = "https://jsonplaceholder.typicode.com/todos/" + id;
+
+            RestTemplate restTemplate = new RestTemplate();
+
+            //forma 1
+            //resultPost = restTemplate.exchange(url, HttpMethod.GET, null, Posts.class);
+
+            //forma 2
+            Posts response = restTemplate.getForObject(url, Posts.class);
+            resultPost = ResponseEntity.ok(response);
+        }catch (Exception e){
+            log.error("Error al consumir el servicio");
+        }
+        return resultPost.getBody();
+    }
+
 }
